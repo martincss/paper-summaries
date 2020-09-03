@@ -180,6 +180,46 @@ literal "false"
 
 \end_layout
 
+\begin_layout Subsection
+Feature Difference Makes Sense 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "park-etal-2020-feature-difference"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Image captioning with deep learning: 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "vinyals2014tell,xu2015attend,karpathy2014deep,You_2016_CVPR"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "zhou17-what-you-just-said"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "anderson2017bottomup"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
