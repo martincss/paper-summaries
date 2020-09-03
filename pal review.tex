@@ -1,0 +1,35 @@
+%% LyX 2.3.5.2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\PassOptionsToPackage{natbib=true}{biblatex}
+\usepackage{fourier}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+%\usepackage[style=numeric,backend=biber,maxbibnames=99]{biblatex}
+\usepackage{hyperref}
+
+\makeatother
+
+\usepackage{babel}
+\usepackage[style=authoryear,maxbibnames=99]{biblatex}
+\addbibresource{papers.bib}
+\begin{document}
+\title{Recopilación de referencias}
+\maketitle
+
+\section{Papers individuales}
+
+\subsection{Show, Attend \& Tell \citep{xu2015attend}}
+
+\subsection{Automatic Generation of Medical Imaging Reports \citep{baoyu_jing2018}}
+\begin{itemize}
+\item Image captioning with deep learning: \citep{vinyals2014tell}\citep{fang2014captions}\citep{karpathy2014deep}\citep{xu2015attend}\citep{You_2016_CVPR}\citep{krause2016hierarchical}\citep{liang2017recurrent}
+\end{itemize}
+\printbibliography
+
+\end{document}
