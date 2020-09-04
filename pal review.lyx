@@ -156,14 +156,6 @@ literal "false"
 
 \begin_inset CommandInset citation
 LatexCommand citep
-key "You_2016_CVPR"
-literal "false"
-
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand citep
 key "krause2016hierarchical"
 literal "false"
 
@@ -172,7 +164,115 @@ literal "false"
 
 \begin_inset CommandInset citation
 LatexCommand citep
+key "you2016image"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
 key "liang2017recurrent"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hierarchical LSTM: 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "krause2016hierarchical,liang2017recurrent"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Co-attention: 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ba2014multiple"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "xu2015attend"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Datasets: 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "IUX-ray"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Metrics: BLEU
+\begin_inset CommandInset citation
+LatexCommand citep
+key "papineni-etal-2002-bleu"
+literal "false"
+
+\end_inset
+
+, METEOR 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "meteor"
+literal "false"
+
+\end_inset
+
+, ROUGE 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "rouge"
+literal "false"
+
+\end_inset
+
+, CIDEr 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "cider"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+LSTM cannot effectively model long sequences: 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "liu-etal-2015-multi"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "martin2018parallelizing"
 literal "false"
 
 \end_inset
@@ -196,7 +296,7 @@ literal "false"
 Image captioning with deep learning: 
 \begin_inset CommandInset citation
 LatexCommand citep
-key "vinyals2014tell,xu2015attend,karpathy2014deep,You_2016_CVPR"
+key "vinyals2014tell,xu2015attend,karpathy2014deep,you2016image"
 literal "false"
 
 \end_inset
@@ -213,6 +313,74 @@ literal "false"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "anderson2017bottomup"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+X-ray datasets: 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kougia2019survey"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Feature difference 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "jhamtani2018learning"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "tan2019expressing"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "forbes2019neural"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Feature vectors from lower convolutional layers
+\begin_inset CommandInset citation
+LatexCommand citep
+key "darlow2019what"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "bau2017network"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "zhou2017interpreting"
 literal "false"
 
 \end_inset
