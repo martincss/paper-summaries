@@ -330,6 +330,14 @@ literal "false"
 \end_inset
 
 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "johnson2019mimiccxrjpg"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -381,6 +389,18 @@ literal "false"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "zhou2017interpreting"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Visual Question Generation from Radiology Images 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sarrouti-etal-2020-visual"
 literal "false"
 
 \end_inset
