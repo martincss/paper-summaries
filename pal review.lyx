@@ -79,6 +79,8 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\bullet 1 0 6 -1
+\bullet 2 0 7 -1
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -408,6 +410,70 @@ literal "false"
 
 \end_layout
 
+\begin_layout Subsection
+A Survey on Biomedical Image Captioning 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kougia2019survey"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Datasets: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+IU X-ray (images, tags & reports): 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://openi.nlm.nih.gov/faq"
+target "https://openi.nlm.nih.gov/faq"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "IUX-ray"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+PEIR-GROSS: 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://peir.path.uab.edu/library/index.php?/category/2"
+target "https://peir.path.uab.edu/library/index.php?/category/2"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+ICLEF-CAPTION (images, tags & reports): 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ImageCLEFoverview2017"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex

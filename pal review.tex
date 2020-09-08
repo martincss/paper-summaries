@@ -7,15 +7,22 @@
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
 \geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+\usepackage{babel}
+\usepackage[unicode=true]
+ {hyperref}
 
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 %\usepackage[style=numeric,backend=biber,maxbibnames=99]{biblatex}
 \usepackage{hyperref}
 
+\AtBeginDocument{
+  \def\labelitemii{\(\ast\)}
+  \def\labelitemiii{\(\star\)}
+}
+
 \makeatother
 
-\usepackage{babel}
 \usepackage[style=authoryear,maxbibnames=99]{biblatex}
 \addbibresource{papers.bib}
 \begin{document}
@@ -47,6 +54,15 @@ ROUGE \citep{rouge}, CIDEr \citep{cider}
 
 \subsection{Visual Question Generation from Radiology Images \citep{sarrouti-etal-2020-visual}}
 
+\subsection{A Survey on Biomedical Image Captioning \citep{kougia2019survey}}
+\begin{itemize}
+\item Datasets: 
+\begin{itemize}
+\item IU X-ray (images, tags \& reports): \href{https://openi.nlm.nih.gov/faq}{https://openi.nlm.nih.gov/faq}\citep{IUX-ray}
+\item PEIR-GROSS: \href{https://peir.path.uab.edu/library/index.php?/category/2}{https://peir.path.uab.edu/library/index.php?/category/2}
+\item ICLEF-CAPTION (images, tags \& reports): \citep{ImageCLEFoverview2017}
+\end{itemize}
+\end{itemize}
 \printbibliography
 
 \end{document}
