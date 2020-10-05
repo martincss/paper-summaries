@@ -56,13 +56,32 @@ ROUGE \citep{rouge}, CIDEr \citep{cider}
 
 \subsection{A Survey on Biomedical Image Captioning \citep{kougia2019survey}}
 \begin{itemize}
+\item Focus on interesting regions: \citep{shin2016learning}
+\item Reducing cost per exam: \citep{lee-korean-review-deep-learning-medical-imaging}
+\item Baselines: \citep{zhang17-MDNet}\citep{wang18-TieNet}
+\item Reevaluating metrics for captioning: \citep{kilickaya-etal-2017-evaluating}
 \item Datasets: 
 \begin{itemize}
 \item IU X-ray (images, tags \& reports): \href{https://openi.nlm.nih.gov/faq}{https://openi.nlm.nih.gov/faq}\citep{IUX-ray}
 \item PEIR-GROSS: \href{https://peir.path.uab.edu/library/index.php?/category/2}{https://peir.path.uab.edu/library/index.php?/category/2}
 \item ICLEF-CAPTION (images, tags \& reports): \citep{ImageCLEFoverview2017}
+\item ChestX-ray8 (images, tags, reports not public) \href{https://nihcc.app.box.com/v/ChestXray-NIHCC}{https://nihcc.app.box.com/v/ChestXray-NIHCC}
+\citep{Wang_2017-chestxray8}
+\end{itemize}
+\item Methods:
+\begin{itemize}
+\item \citep{shin2016learning} CNN encoder trained to predict 17 classes
+(MESH terms in IU X-ray)
+\item \citep{zhang17-MDNet}
+\item \citep{baoyu_jing2018}
+\item \citep{wang18-TieNet}
+\item iclef
+\item \citep{gale2018producing}
 \end{itemize}
 \end{itemize}
+
+\subsection{Deep learning in generating radiology reports: A survey \citep{monshi-review2020}}
+
 \printbibliography
 
 \end{document}

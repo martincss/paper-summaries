@@ -423,6 +423,62 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
+Focus on interesting regions: 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "shin2016learning"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Reducing cost per exam: 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "lee-korean-review-deep-learning-medical-imaging"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Baselines: 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "zhang17-MDNet"
+literal "false"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "wang18-TieNet"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Reevaluating metrics for captioning: 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kilickaya-etal-2017-evaluating"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
 Datasets: 
 \end_layout
 
@@ -473,7 +529,104 @@ literal "false"
 
 \end_layout
 
+\begin_layout Itemize
+ChestX-ray8 (images, tags, reports not public) 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://nihcc.app.box.com/v/ChestXray-NIHCC"
+literal "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Wang_2017-chestxray8"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
 \end_deeper
+\begin_layout Itemize
+Methods:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset CommandInset citation
+LatexCommand citep
+key "shin2016learning"
+literal "false"
+
+\end_inset
+
+ CNN encoder trained to predict 17 classes (MESH terms in IU X-ray)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset citation
+LatexCommand citep
+key "zhang17-MDNet"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset citation
+LatexCommand citep
+key "baoyu_jing2018"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset citation
+LatexCommand citep
+key "wang18-TieNet"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+iclef
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset citation
+LatexCommand citep
+key "gale2018producing"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Deep learning in generating radiology reports: A survey 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "monshi-review2020"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex

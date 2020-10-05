@@ -1,0 +1,299 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+%\usepackage[style=numeric,backend=biber,maxbibnames=99]{biblatex}
+\usepackage{hyperref}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "utopia" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command biber
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine biblatex-natbib
+\cite_engine_type authoryear
+\biblio_style plain
+\biblio_options maxbibnames=99
+\biblatex_bibstyle authoryear
+\biblatex_citestyle authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 1 0 6 -1
+\bullet 2 0 7 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Paper summaries
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset href
+LatexCommand href
+name "On the Automatic Generation of Medical Imaging Reports"
+target "https://docs.google.com/presentation/d/1m4Z3RJDueaKMvCO-cb_Ia51nTW6-OSE9hXVPy1l1-_I/edit?usp=sharing"
+literal "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "baoyu_jing2018"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Introduction
+\end_layout
+
+\begin_layout Standard
+The reading and interpretation of medical images are usually conducted by
+ specialized medical professionals.
+ Report writing can be error-prone for inexperienced physicians, and time-consum
+ing and tedious for experienced physicians.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Several challenges need to be addressed:
+\end_layout
+
+\begin_layout Enumerate
+A complete report consists of multiple heterogeneous sources of information
+\end_layout
+
+\begin_layout Enumerate
+Localize image regions and attach the right description to them 
+\end_layout
+
+\begin_layout Enumerate
+Descriptions in reports are usually long, with multiple sentences
+\end_layout
+
+\begin_layout Standard
+The proposed solutions are:
+\end_layout
+
+\begin_layout Enumerate
+A 
+\series bold
+multi-task learning framework
+\series default
+ for simultaneous prediction of tags and text generation
+\end_layout
+
+\begin_layout Enumerate
+A 
+\series bold
+Co-attention mechanism: 
+\series default
+simultaneous attention to images and predicted tags; explores synergistic
+ effects of visual and semantic information 
+\end_layout
+
+\begin_layout Enumerate
+A 
+\series bold
+Hierarchical LSTM: 
+\series default
+Leverages compositional nature of reports: first generates high-level topics,
+ then fine-grained descriptions from each one
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/baoyu_jing_report.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sample report from IU X-ray
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Methods and Architecture
+\end_layout
+
+\begin_layout Standard
+An image is divided into regions, and a CNN encoder is used to learn visual
+ features for these patches.
+ These features are fed into a 
+\emph on
+multi-label classifier
+\emph default
+, from which tags are predicted.
+ These tags are transformed into 
+\emph on
+semantic feature vectors 
+\emph default
+by a custom embedding.
+ Both visual and semantic features are fed into the co-attention module,
+ which produces a combined 
+\emph on
+context vector, 
+\emph default
+which 
+\series bold
+simultaneously captures the visual and semantic information of this image.
+
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+The decoding and caption generation process is performed by the hierarchical
+ LSTM, which leverages the compositional structure of a medical report (each
+ sentence focusing on one specific topic).
+ The sentence LSTM, using the context vector, first generates a sequence
+ of high-level topic vectors representing sentences.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/baoyu_jing_architecture.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Architecture
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "papers"
+options "apalike"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
