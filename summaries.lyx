@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass extbook
 \begin_preamble
 %\usepackage[style=numeric,backend=biber,maxbibnames=99]{biblatex}
 \usepackage{hyperref}
@@ -102,7 +102,7 @@ Paper summaries
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Chapter
 \begin_inset CommandInset href
 LatexCommand href
 name "On the Automatic Generation of Medical Imaging Reports"
@@ -122,7 +122,7 @@ literal "false"
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Introduction
 \end_layout
 
@@ -209,16 +209,12 @@ Sample report from IU X-ray
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Methods and Architecture
 \end_layout
 
@@ -305,7 +301,7 @@ Architecture
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Tag prediction
 \end_layout
 
@@ -363,7 +359,7 @@ semantic features.
  
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Co-Attention
 \end_layout
 
@@ -442,7 +438,7 @@ These context vector may be combined by concatenation followed by a fully
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Sentence LSTM
 \end_layout
 
@@ -505,7 +501,7 @@ p\left(\text{STOP}\;|\;\vec h_{\text{sent}}^{(s-1)},\vec h_{\text{sent}}^{(s)}\r
 This stopping probability is then compared with a predefined threshold.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Word LSTM
 \end_layout
 
@@ -547,7 +543,7 @@ p\left(\text{word}\;|\;\vec h_{\text{word}}\right)\propto\exp\left(\vec W_{\text
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Parameter learning
 \end_layout
 
@@ -704,7 +700,7 @@ literal "false"
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Chapter
 Evaluation of text generation: A survey 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -733,7 +729,7 @@ Automatic metrics
 Machine-learned evaluation
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Introduction
 \end_layout
 
@@ -839,7 +835,7 @@ Nevertheless, training a powerful language model relies on evaluation metrics
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Outline
 \end_layout
 
@@ -873,7 +869,7 @@ Machine-learned Metrics:
 models that can be viewed as digital judges that simulate human judges.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Human-Centric Evaluation Methods
 \end_layout
 
@@ -890,7 +886,7 @@ Human evaluations pose several challenges: expensive and time-consuming
  
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Intrinsic Evaluation
 \end_layout
 
@@ -1002,6 +998,242 @@ how often do you expect to see text that looks like this?
 
 \emph on
 Redundancy
+\end_layout
+
+\begin_layout Subsection
+Extrinsic evaluation
+\end_layout
+
+\begin_layout Standard
+An 
+\emph on
+extrinsic evaluation 
+\emph default
+asks people to evaluate the system's performance on the task for which it
+ was designed.
+ They are the most meaningful for downstream tasks, but can be expensive
+ and difficult to run.
+ 
+\end_layout
+
+\begin_layout Subsection
+The Evaluators
+\end_layout
+
+\begin_layout Standard
+For many NLG tasks, no specific expertise is required of the evaluators
+ (other than language).
+ Many evaluators can be crowdsourced online (
+\emph on
+e.g.
+ 
+\emph default
+Amazon Mechanical Turk), though issues of quality control may be raised.
+ Other cases require expert human annotators.
+\end_layout
+
+\begin_layout Subsection
+Inter-Evaluator Agreement
+\end_layout
+
+\begin_layout Standard
+Evaluating natural language will always include some degree of subjectivity.
+ The rate of evaluator disagreement is also useful to measure, since high
+ agreement can signal the task is well-defined and differences in generated
+ text are noticeable, while low agreement can mean the opposite.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Percent agreement
+\end_layout
+
+\begin_layout Standard
+Flat percent of cases in which the evaluators agree: 
+\begin_inset Formula $X$
+\end_inset
+
+ is the set of generated texts, and 
+\begin_inset Formula $a_{i}=1$
+\end_inset
+
+ indicates agreement
+\begin_inset Formula 
+\begin{equation}
+P_{a}=\dfrac{1}{\left|X\right|}\sum_{i=0}^{\left|X\right|}a_{i}\label{eq:p_agree}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+This may be a common metric, but does not take into account chance agreement,
+ especially with small number of scores (hypothesis testing?)
+\end_layout
+
+\begin_layout Subsubsection
+Cohen's 
+\begin_inset Formula $\kappa$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This measure can capture agreements that may happen by chance: we now consider
+ such probability
+\begin_inset Formula $P_{c}$
+\end_inset
+
+.
+ For 
+\series bold
+two
+\series default
+ evaluators are scoring 
+\begin_inset Formula $X$
+\end_inset
+
+ with a score from a set 
+\begin_inset Formula $S$
+\end_inset
+
+, the probability of all scoring a text the same (assuming independence):
+\begin_inset Formula 
+\[
+P_{c}=\sum_{s\in S}P\left(s\,|\,e_{1}\right)P\left(s\,|\,e_{2}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Each 
+\begin_inset Formula $P\left(s\,|\,e_{i}\right)$
+\end_inset
+
+ is estimated by the frequency with which evaluator 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ assigned each score 
+\begin_inset Formula $s$
+\end_inset
+
+.
+ Cohen's 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ is defined as
+\begin_inset Formula 
+\[
+\kappa=\dfrac{P_{a}-P_{c}}{1-P_{c}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Fleiss' 
+\begin_inset Formula $\kappa$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Generalizes Cohen's 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ for more than two raters, by considering agreement across all pairs of
+ evaluators.
+ We now define the agreement 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ for each text 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ as 
+\begin_inset Formula 
+\[
+a_{i}=\dfrac{\sum_{s\in S}\text{\# of evaluator pairs who score \ensuremath{x_{i}}as \ensuremath{s}}}{\text{total \# of evaluator pairs}}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The agreement probability 
+\begin_inset Formula $P_{a}$
+\end_inset
+
+ can thus be computed by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p_agree"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The chance agreement probability is estimated by aggregating the frequency
+ of scores across all annotators, with the assumption that each judge is
+ equally likely to draw from this distribution 
+\begin_inset Formula $r_{s}$
+\end_inset
+
+.
+ Thus, the chance of two annotators assigning score 
+\begin_inset Formula $s$
+\end_inset
+
+ by chance is 
+\begin_inset Formula $r_{s}^{2}$
+\end_inset
+
+, and the overall probability is 
+\begin_inset Formula 
+\[
+P_{c}=\sum_{s\in S}r_{s}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Fleiss' 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ is once again defined as 
+\begin_inset Formula 
+\[
+\kappa=\dfrac{P_{a}-P_{c}}{1-P_{c}}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
