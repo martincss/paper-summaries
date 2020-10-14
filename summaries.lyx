@@ -1236,7 +1236,82 @@ Fleiss'
 
 \end_layout
 
+\begin_layout Subsubsection
+Krippendorff's 
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
+This is technically a measure of 
+\emph on
+disagreement
+\emph default
+, allowing different levels of disagreement to be taken to account.
+\end_layout
+
+\begin_layout Standard
+The overall probability of disagreement across all possible score pairs
+ 
+\begin_inset Formula $\left(s_{m},s_{n}\right)$
+\end_inset
+
+, each weighted by 
+\begin_inset Formula $w_{m,n}$
+\end_inset
+
+ is computed by 
+\begin_inset Formula 
+\[
+P_{d}=\sum_{m=0}^{\left|S\right|}\sum_{n=0}^{\left|S\right|}w_{m,n}\sum_{i=0}^{\left|X\right|}\dfrac{\text{\# of evaluator pairs that assign \ensuremath{x_{i}}as \ensuremath{\left(s_{m},s_{n}\right)}}}{\text{total \# of evaluator pairs}}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(noting that 
+\begin_inset Formula $w_{m,n}=0$
+\end_inset
+
+ for score agreement).
+\end_layout
+
+\begin_layout Standard
+To calculate the expected disagreement, we also assume independence and
+ estimate the probability of score assignment from the overall frequency.
+ With the distribution of pairs 
+\begin_inset Formula $r_{m,n}$
+\end_inset
+
+, the probability of disagreement by chance is 
+\begin_inset Formula 
+\[
+P_{c}=\sum_{m=0}^{\left|S\right|}\sum_{n=0}^{\left|S\right|}w_{m,n}r_{m,n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Krippendorff's 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is defined as 
+\begin_inset Formula 
+\[
+\alpha=1-\dfrac{P_{d}}{P_{c}}
+\]
+
+\end_inset
+
 
 \end_layout
 

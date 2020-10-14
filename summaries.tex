@@ -408,6 +408,34 @@ Fleiss' $\kappa$ is once again defined as
 \kappa=\dfrac{P_{a}-P_{c}}{1-P_{c}}
 \]
 
+
+\subsubsection{Krippendorff's $\alpha$}
+
+This is technically a measure of \emph{disagreement}, allowing different
+levels of disagreement to be taken to account.
+
+The overall probability of disagreement across all possible score
+pairs $\left(s_{m},s_{n}\right)$, each weighted by $w_{m,n}$ is
+computed by 
+\[
+P_{d}=\sum_{m=0}^{\left|S\right|}\sum_{n=0}^{\left|S\right|}w_{m,n}\sum_{i=0}^{\left|X\right|}\dfrac{\text{\# of evaluator pairs that assign \ensuremath{x_{i}}as \ensuremath{\left(s_{m},s_{n}\right)}}}{\text{total \# of evaluator pairs}}
+\]
+\\
+(noting that $w_{m,n}=0$ for score agreement).
+
+To calculate the expected disagreement, we also assume independence
+and estimate the probability of score assignment from the overall
+frequency. With the distribution of pairs $r_{m,n}$, the probability
+of disagreement by chance is 
+\[
+P_{c}=\sum_{m=0}^{\left|S\right|}\sum_{n=0}^{\left|S\right|}w_{m,n}r_{m,n}
+\]
+
+Krippendorff's $\alpha$ is defined as 
+\[
+\alpha=1-\dfrac{P_{d}}{P_{c}}
+\]
+
 \printbibliography
 
 \end{document}
