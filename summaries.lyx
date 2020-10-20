@@ -1315,6 +1315,436 @@ Krippendorff's
 
 \end_layout
 
+\begin_layout Section
+Untrained Automatic Evaluation Metrics
+\end_layout
+
+\begin_layout Standard
+As human-based evaluation is costly and time-consuming, automatic metrics
+ are employed in developing and comparing new models against the state-of-the-ar
+t.
+ 
+\end_layout
+
+\begin_layout Standard
+Untrained automatic metrics compute a score that indicates similarity between
+ a generated text and a (human-written) reference.
+ These metrics are fast and efficient.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/metrics_review_table.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Untrained metrics comparison 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset Formula $n$
+\end_inset
+
+-gram Overlap Metrics for Content Selection
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $n$
+\end_inset
+
+-gram overlap metrics measure the degree of 
+\begin_inset Quotes eld
+\end_inset
+
+matching
+\begin_inset Quotes erd
+\end_inset
+
+ between generating and reference text.
+\end_layout
+
+\begin_layout Subsubsection
+F-Score 
+\begin_inset Formula $F_{1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+F_{1}=2\times\dfrac{\text{Precision \ensuremath{\cdot} Recall}}{\text{Precision \ensuremath{+} Recall}}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+where Precision is the fraction of 
+\begin_inset Formula $n$
+\end_inset
+
+-grams in generated text that are present in reference text, and recall
+ is the fraction of 
+\begin_inset Formula $n$
+\end_inset
+
+-grams from the reference text that are present in the candidate text.
+\end_layout
+
+\begin_layout Standard
+Character 
+\begin_inset Formula $n$
+\end_inset
+
+-gram F-score seems some usage in machine translation, with high correlation
+ with human judgments.
+\end_layout
+
+\begin_layout Subsubsection
+BLEU
+\end_layout
+
+\begin_layout Standard
+Bilingual Evaluation Understudy is a weighted geometric mean of 
+\begin_inset Formula $n$
+\end_inset
+
+-gram precision scores 
+\begin_inset Formula 
+\[
+\text{prec}_{n}=\dfrac{\sum_{s}\min\left[c\left(s,\hat{y}\right).c\left(s,y\right)\right]}{\sum_{s}c\left(s,\hat{y}\right)}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+where 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+ is the candidate sequence, 
+\begin_inset Formula $y$
+\end_inset
+
+ the reference, 
+\begin_inset Formula $s$
+\end_inset
+
+ an 
+\begin_inset Formula $n$
+\end_inset
+
+-gram sequence of 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+, and 
+\begin_inset Formula $c\left(s,\hat{y}\right)$
+\end_inset
+
+ is the number of times 
+\begin_inset Formula $s$
+\end_inset
+
+ appears in 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Thus, BLEU is defined as 
+\begin_inset Formula 
+\[
+\text{BLEU}=\mathcal{BP}\times\exp\left(\sum_{n=1}^{N}w_{n}\log\text{prec}_{n}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+where 
+\begin_inset Formula $\mathcal{BP}$
+\end_inset
+
+ is a 
+\emph on
+brevity penalty
+\emph default
+ that penalizes sequences that are too short
+\begin_inset Formula 
+\[
+\mathcal{BP}=\begin{cases}
+1 & c>r\\
+e^{(1-r/c)} & c\leq r
+\end{cases}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+where 
+\begin_inset Formula $c$
+\end_inset
+
+ is the candidate text length and 
+\begin_inset Formula $r$
+\end_inset
+
+ is the effective corpus reference length.
+ 
+\begin_inset Formula $N$
+\end_inset
+
+ is the largest 
+\begin_inset Formula $n$
+\end_inset
+
+-gram length (
+\emph on
+i.e.
+
+\emph default
+ BLEU-N), and the weights 
+\begin_inset Formula $w_{n}$
+\end_inset
+
+ are usually taken as 
+\begin_inset Formula $1/N$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+While BLEU has some advantages for machine translation, it doesn't correlate
+ well with human judgments for other tasks, such as image captioning and
+ dialog response generation.
+ It has been reported that 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+there's not good evidence to support that 
+\emph default
+BLEU
+\emph on
+ is the best metric for evaluating NLG systems other than machine translation.
+ 
+\emph default
+Even generated samples with perfect BLEU with the corpus and are grammatically
+ correct, lacked semantic and/or global coherence.
+\end_layout
+
+\begin_layout Subsubsection
+NIST
+\end_layout
+
+\begin_layout Standard
+Similar to BLEU for evaluating quality of text, but weights heavily less
+ frequent 
+\begin_inset Formula $n$
+\end_inset
+
+-grams, as co-occurrences of these are more informative than common 
+\begin_inset Formula $n$
+\end_inset
+
+-grams.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+ROUGE
+\end_layout
+
+\begin_layout Standard
+Recall-Oriented Understudy for Gisting Evaluation evaluate automatic summarizati
+on of long texts with multiple sentences or paragraphs.
+ Has also been adopted for machine translation, image captioning, etc.
+\end_layout
+
+\begin_layout Standard
+Includes a number of variants, ROUGE-N also measures 
+\begin_inset Formula $n$
+\end_inset
+
+-gram overlap, and can be defined as 
+\begin_inset Formula 
+\[
+\text{ROUGE-N}=\dfrac{\sum_{r}\sum_{n}\text{match}\left(\text{gram}_{n.r}\right)}{\sum_{r}\sum_{n}\text{count}\left(\text{gram}_{n}\right)}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+where 
+\begin_inset Formula $\sum_{n}$
+\end_inset
+
+ sums over all 
+\begin_inset Formula $n$
+\end_inset
+
+–grams of length 
+\begin_inset Formula $n$
+\end_inset
+
+, and 
+\begin_inset Formula $\sum_{r}$
+\end_inset
+
+ repeats the sum for each reference summary, if there is more than one.
+\end_layout
+
+\begin_layout Standard
+Some commonly used varieties:
+\end_layout
+
+\begin_layout Itemize
+ROUGE-1,2,3,4: for corresponding 
+\begin_inset Formula $n$
+\end_inset
+
+-grams
+\end_layout
+
+\begin_layout Itemize
+ROUGE-L: measures the longest matching sequence of words using longest common
+ subsequence.
+ 
+\end_layout
+
+\begin_layout Standard
+Compared to BLEU, ROUGE focuses on recall rather than precision and is more
+ interpretable.
+ It evaluates the adequacy of generated text by counting how many 
+\begin_inset Formula $n$
+\end_inset
+
+-grams in the text match the ones in the reference.
+ This is considered a bottleneck, as it doesn't provide information about
+ the narrative flow, grammar or topical flow; or evaluate factual correctness.
+\end_layout
+
+\begin_layout Subsubsection
+METEOR
+\end_layout
+
+\begin_layout Standard
+Metric for Evaluation of Translation with Explicit ORdering is designed
+ to address issues in BLEU and has been used for image captioning, question
+ generation and summarization.
+ It is based on the harmonic mean of unigram precision and recall, with
+ recall being weighted higher.
+ It yields high correlation with human judgments.
+ 
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $c(u)$
+\end_inset
+
+ be the number of unigrams matching between the hypothesis and reference
+ text, and 
+\begin_inset Formula $c_{h}\left(u\right),c_{r}\left(u\right)$
+\end_inset
+
+ be the total number of unigrams in the hypothesis and reference text respective
+ly.
+ Thus, 
+\begin_inset Formula $\text{Recall}=c\left(u\right)/c_{r}\left(u\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\text{\text{Precision}}=c\left(u\right)/c_{h}\left(u\right)$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula 
+\[
+F_{\alpha}=\dfrac{\text{Precision \ensuremath{\cdot} Recall}}{\alpha\text{Precision \ensuremath{+(1-\alpha)} Recall}}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The alignment between hypothesis and reference is 
+\begin_inset Formula 
+\[
+\text{METEOR}=F_{\alpha}\times\left(1-\text{penalty}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+where the 
+\emph on
+fragmentation penalty
+\emph default
+ determines the extent to which the matched unigrams are well-ordered
+\begin_inset Formula 
+\[
+\text{penalty}=\gamma\,\text{frag}^{\beta}
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex

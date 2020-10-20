@@ -436,6 +436,145 @@ Krippendorff's $\alpha$ is defined as
 \alpha=1-\dfrac{P_{d}}{P_{c}}
 \]
 
+
+\section{Untrained Automatic Evaluation Metrics}
+
+As human-based evaluation is costly and time-consuming, automatic
+metrics are employed in developing and comparing new models against
+the state-of-the-art. 
+
+Untrained automatic metrics compute a score that indicates similarity
+between a generated text and a (human-written) reference. These metrics
+are fast and efficient.
+
+\begin{figure}
+\begin{centering}
+\includegraphics[scale=0.5]{images/metrics_review_table}
+\par\end{centering}
+\caption{Untrained metrics comparison }
+\end{figure}
+
+
+\subsection{$n$-gram Overlap Metrics for Content Selection}
+
+$n$-gram overlap metrics measure the degree of ``matching'' between
+generating and reference text.
+
+\subsubsection{F-Score $F_{1}$}
+
+\[
+F_{1}=2\times\dfrac{\text{Precision \ensuremath{\cdot} Recall}}{\text{Precision \ensuremath{+} Recall}}
+\]
+\\
+where Precision is the fraction of $n$-grams in generated text that
+are present in reference text, and recall is the fraction of $n$-grams
+from the reference text that are present in the candidate text.
+
+Character $n$-gram F-score seems some usage in machine translation,
+with high correlation with human judgments.
+
+\subsubsection{BLEU}
+
+Bilingual Evaluation Understudy is a weighted geometric mean of $n$-gram
+precision scores 
+\[
+\text{prec}_{n}=\dfrac{\sum_{s}\min\left[c\left(s,\hat{y}\right).c\left(s,y\right)\right]}{\sum_{s}c\left(s,\hat{y}\right)}
+\]
+\\
+where $\hat{y}$ is the candidate sequence, $y$ the reference, $s$
+an $n$-gram sequence of $\hat{y}$, and $c\left(s,\hat{y}\right)$
+is the number of times $s$ appears in $\hat{y}$. 
+
+Thus, BLEU is defined as 
+\[
+\text{BLEU}=\mathcal{BP}\times\exp\left(\sum_{n=1}^{N}w_{n}\log\text{prec}_{n}\right)
+\]
+\\
+where $\mathcal{BP}$ is a \emph{brevity penalty} that penalizes sequences
+that are too short
+\[
+\mathcal{BP}=\begin{cases}
+1 & c>r\\
+e^{(1-r/c)} & c\leq r
+\end{cases}
+\]
+\\
+where $c$ is the candidate text length and $r$ is the effective
+corpus reference length. $N$ is the largest $n$-gram length (\emph{i.e.}
+BLEU-N), and the weights $w_{n}$ are usually taken as $1/N$. 
+
+While BLEU has some advantages for machine translation, it doesn't
+correlate well with human judgments for other tasks, such as image
+captioning and dialog response generation. It has been reported that
+``\emph{there's not good evidence to support that }BLEU\emph{ is
+the best metric for evaluating NLG systems other than machine translation.
+}Even generated samples with perfect BLEU with the corpus and are
+grammatically correct, lacked semantic and/or global coherence.
+
+\subsubsection{NIST}
+
+Similar to BLEU for evaluating quality of text, but weights heavily
+less frequent $n$-grams, as co-occurrences of these are more informative
+than common $n$-grams. 
+
+\subsubsection{ROUGE}
+
+Recall-Oriented Understudy for Gisting Evaluation evaluate automatic
+summarization of long texts with multiple sentences or paragraphs.
+Has also been adopted for machine translation, image captioning, etc.
+
+Includes a number of variants, ROUGE-N also measures $n$-gram overlap,
+and can be defined as 
+\[
+\text{ROUGE-N}=\dfrac{\sum_{r}\sum_{n}\text{match}\left(\text{gram}_{n.r}\right)}{\sum_{r}\sum_{n}\text{count}\left(\text{gram}_{n}\right)}
+\]
+\\
+where $\sum_{n}$ sums over all $n$--grams of length $n$, and $\sum_{r}$
+repeats the sum for each reference summary, if there is more than
+one.
+
+Some commonly used varieties:
+\begin{itemize}
+\item ROUGE-1,2,3,4: for corresponding $n$-grams
+\item ROUGE-L: measures the longest matching sequence of words using longest
+common subsequence. 
+\end{itemize}
+Compared to BLEU, ROUGE focuses on recall rather than precision and
+is more interpretable. It evaluates the adequacy of generated text
+by counting how many $n$-grams in the text match the ones in the
+reference. This is considered a bottleneck, as it doesn't provide
+information about the narrative flow, grammar or topical flow; or
+evaluate factual correctness.
+
+\subsubsection{METEOR}
+
+Metric for Evaluation of Translation with Explicit ORdering is designed
+to address issues in BLEU and has been used for image captioning,
+question generation and summarization. It is based on the harmonic
+mean of unigram precision and recall, with recall being weighted higher.
+It yields high correlation with human judgments. 
+
+Let $c(u)$ be the number of unigrams matching between the hypothesis
+and reference text, and $c_{h}\left(u\right),c_{r}\left(u\right)$
+be the total number of unigrams in the hypothesis and reference text
+respectively. Thus, $\text{Recall}=c\left(u\right)/c_{r}\left(u\right)$
+and $\text{\text{Precision}}=c\left(u\right)/c_{h}\left(u\right)$.
+Then 
+\[
+F_{\alpha}=\dfrac{\text{Precision \ensuremath{\cdot} Recall}}{\alpha\text{Precision \ensuremath{+(1-\alpha)} Recall}}
+\]
+\\
+The alignment between hypothesis and reference is 
+\[
+\text{METEOR}=F_{\alpha}\times\left(1-\text{penalty}\right)
+\]
+\\
+where the \emph{fragmentation penalty} determines the extent to which
+the matched unigrams are well-ordered
+\[
+\text{penalty}=\gamma\,\text{frag}^{\beta}
+\]
+
 \printbibliography
 
 \end{document}
